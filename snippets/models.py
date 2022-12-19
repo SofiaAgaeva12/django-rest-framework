@@ -16,6 +16,6 @@ class Author(models.Model):
 
 class Book(models.Model):
     title = models.CharField(max_length=100, verbose_name='Название', blank=False)
-    author = models.ForeignKey(Author, max_length=100, verbose_name='Автор', blank=False)
+    author = models.ForeignKey(Author, max_length=100, verbose_name='Автор', blank=False, on_delete=models.CASCADE)
     year_of_rel = models.IntegerField(verbose_name='Год выпуска', blank=False,
                                     validators=[MinValueValidator(1000), MaxValueValidator(9999)])
