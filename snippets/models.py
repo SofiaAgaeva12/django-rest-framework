@@ -18,12 +18,12 @@ class Book(models.Model):
     title = models.CharField(max_length=100, verbose_name='Название', blank=False)
     author = models.ForeignKey(Author, max_length=100, verbose_name='Автор', blank=False, on_delete=models.CASCADE)
     publishing_office = models.CharField(max_length=100, verbose_name='Издательство')
-    publication = models.IntegerField(verbose_name='Год выпуска', blank=False,
+    yearOfRel = models.IntegerField(verbose_name='Год выпуска', blank=False,
                                       validators=[MinValueValidator(1000), MaxValueValidator(2022)])
     genre = models.CharField(max_length=200, verbose_name='Жанр', blank=True)
     category = models.CharField(max_length=200, verbose_name='Категория', blank=True)
 
     class Meta:
-        unique_together = ('title', 'author', 'publication', 'publishing_office')
+        unique_together = ('title', 'author', 'yearOfRel', 'publishing_office')
         verbose_name = 'Книга'
         verbose_name_plural = 'Книги'
